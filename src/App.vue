@@ -1,12 +1,21 @@
 <script>
+import AppMain from './components/AppMain.vue';
+
+
+export default {
+  data() {
+    return {};  
+  },
+  components: { AppMain }
+}
+
 
 </script>
 
 <template>
- <h1>caio</h1>
+  <AppMain />
 </template>
 
 <style lang="scss">
 @use "./style/general.scss" as *;
-
 </style>
