@@ -1,21 +1,23 @@
 <script>
 import axios from 'axios';
+import { store } from '../store';
 
 export default {
     data() {
         return {
-            baseUrl: 'http://127.0.0.1:8000',
+            store,
             curProject: null,
             loading: false,
         }
     },
     created() {
-        console.log(this.$route.params.slug);
+        
         this.loading = true;
         axios
-            .get(`${this.baseUrl}/api/projects/${this.$route.params.slug}`)
+            .get(`${this.store.baseUrl}/api/projects/${this.$route.params.slug}`)
             .then((resp) => {
                 this.curProject = resp.data.result;
+                console.log(this.curProject);
             })
             .finally(() => {
                 this.loading = false;
@@ -31,6 +33,8 @@ export default {
         </div>
         <div v-else>
             <h1>{{ curProject.title }}</h1>
+
+
         </div>
     </div>
 </template>
