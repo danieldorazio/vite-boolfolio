@@ -14,6 +14,8 @@ export default {
 
 <template>
   <AppMain />
+
+  <router-view></router-view>
 </template>
 
 <style lang="scss">
