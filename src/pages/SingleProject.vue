@@ -32,8 +32,19 @@ export default {
             <h3>Loading...</h3>
         </div>
         <div v-else>
-            <h1>{{ curProject.title }}</h1>
-
+            <div class="card m-auto " style="width: 18rem;">
+                <img :src="`${store.baseUrl}/storage/${curProject.cover_image}`" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"> {{ curProject.title }}</h5>
+                    <p class="card-text"> {{ curProject.description }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"> {{ curProject.user.name }}</li>
+                    <li class="list-group-item"> {{ curProject.type.name }}</li>
+                    <li class="list-group-item"> {{ curProject.type.typology }}</li>
+                    <li v-for="tecnology  in curProject.tecnologies" class="list-group-item"> {{ tecnology.name }}</li>
+                </ul>
+            </div>
 
         </div>
     </div>
