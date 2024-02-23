@@ -11,13 +11,19 @@ export default {
         }
     },
     created() {
-        
+
         this.loading = true;
         axios
             .get(`${this.store.baseUrl}/api/projects/${this.$route.params.slug}`)
             .then((resp) => {
-                this.curProject = resp.data.result;
-                console.log(this.curProject);
+                console.log(resp.data.success);
+                if (resp.data.success) {
+                    this.curProject = resp.data.result;
+                    console.log(this.curProject);
+                } else {
+                    console.log(this.$router);
+                    this.$router.push({name: 'not-found'})
+                }
             })
             .finally(() => {
                 this.loading = false;
